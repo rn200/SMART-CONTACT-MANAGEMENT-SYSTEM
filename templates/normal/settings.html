@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace=normal/base::layout(~{::section})>
+<head>
+	<meta charset="UTF-8" />
+	<title>settings page</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+	   
+</head>
+<body>
+	<section>
+	<div class="container mt-3">
+    <div class="row">
+      <div class="card ml-2 mt-2 mr-2">
+        <h3 class="heading text-center mt-3">Change Password</h3>
+        <div class="card-body">
+          <form action="" th:action="@{/user/new-password}" method="post">
+            <div class="password-box mb-2">
+              <input class="form-control form-control-sm"
+                     type="password"
+                     name="oldPassword"
+                     placeholder="Enter old password"
+                     aria-label=".form-control-lg example"
+                     required>
+             
+            </div>
+            <div class="password-box mb-2">
+              <input class="form-control form-control-sm"
+                     type="password"
+                     name="newPassword"
+                     placeholder="Enter new password"
+                     aria-label=".form-control-lg example"
+                     required>
+          
+            </div>
+            <div class="container text-center mt-3 mb-2">
+              <button type="submit" class="btn btn-success mr-2" style="width:80px">Change</button>
+              <button type="reset" class="btn btn-warning" style="width:80px">Reset</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+	</section>
+</body>
+</html>

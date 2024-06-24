@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace=~{admin/base::layout(~{::section})}>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<section>
+   <div class="container mt-2">
+   <div class="card-header text-center" style="font-weight: bold;font-size:20px">Users</div>
+      <div th:if="${session.message}" class="container text-center">
+        
+                               <div th:classappend="${'alert-'+session.message.type}" class="alert  text-center my-1" role="alert">
+          
+                                  <span th:text="${session.message.contect}"></span>
+                                  <th:block th:text="${@sessionHelper.removeSessionFromHelper()}"></th:block>
+                              
+                              </div>
+
+                           </div>
+      <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Sl No.</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Role</th>
+      <th scope="col">About</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  <th:block th:each="ur,u:${users}">
+    <tr>
+      <th scope="row">[[${u.count}]]</th>
+      <td>[[${ur.name}]]</td>
+      <td>[[${ur.email}]]</td>
+      <td>[[${ur.role}]]</td>
+      <td>[[${ur.about}]]</td>
+      <td>
+        <a th:href="@{'/admin/'+${ur.id}+'/delete'}" class="form-control text-center bg-danger text-white" style="text-decoration: none;border-radius: 10px">Delete Permanently</a>
+      </td>
+    </tr>
+    </th:block>
+    
+  </tbody>
+</table>
+   </div>
+</section>
+</body>
+</html>

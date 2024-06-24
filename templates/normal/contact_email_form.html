@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace=normal/base::layout(~{::section})>
+<head>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" 
+	      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" 
+	      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" 
+	      crossorigin="anonymous" 
+	      referrerpolicy="no-referrer" />
+	<title th:text="${title}"></title>
+</head>
+<body>
+	<section>
+	   <div class="card mb-2"  >
+	   
+	        <div class="card-body" th:if="${contact}">
+	        
+	            <div class="container text-center">
+	            
+	                  <img style="width:115px;height:115px;border-radius:50%" src="" class="profile_picture " th:src="@{'/image/'+${contact.image}}" />
+	                  <h3 class="namewithnickname mt-2"> <span style="color:orange" th:text="${contact.name}"></span><span style="color:tomato" class="spanclass ml-2" th:text="@{'('+${contact.lastName}+')'}"></span></h3>
+	            </div>
+	            
+	            <table class="table text-center">
+
+  <tbody>
+    <tr>
+      <th scope="row"><i class="fa-solid fa-id-card-clip"></i> ID</th>
+      
+      <td><span th:text="@{'PROFILE'+${contact.cid}}"></span></td>
+    </tr>
+    
+    <tr>
+      <th scope="row"><i class="fa-solid fa-envelope"></i> Email</th>
+      <td><span th:text="${contact.email}"></span></td>
+      
+    </tr>
+    
+    <tr>
+      <th scope="row"><i class="fa-solid fa-phone"></i> Phone</th>
+      <td><span th:text="${contact.phone}"></span></td>
+     
+    </tr>
+    
+    <tr>
+      <th scope="row"><i class="fa-solid fa-person-digging"></i> Work</th>
+      <td><span th:text="${contact.work}"></span></td>
+    
+    </tr>
+  </tbody>
+</table>
+
+         <div class="container text-center">
+     
+               <p th:utext="${contact.description}"></p>
+     
+         </div>
+	           
+	        
+	            
+	        </div>
+	        
+	       <h1 class="permission text-center" style="color:red"  th:unless="${contact}"> no permission to see this contact</h1>
+	   
+	   </div>
+	
+	</section>
+</body>
+</html>

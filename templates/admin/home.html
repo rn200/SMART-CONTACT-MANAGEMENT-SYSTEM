@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace=~{admin/base::layout(~{::section})}>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<section>
+<div class="container mt-4 ">
+            <div class="car-header text-center form-control bg-warning" style="font-weight: bold;font-size: 20px">Admin Panel</div> 
+            
+                    <a th:href="@{/admin/showuser}" class="" style="text-decoration: none;height: 80px;width: 100px">
+                      <div class="card card-shl">
+                          <div class="card-body text-center mr-5">Users Detail</div>
+                      </div>
+                    </a>
+                </div>
+                
+                
+   </section>             
+</body>
+</html>

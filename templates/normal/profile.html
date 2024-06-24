@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace=normal/base::layout(~{::section})>
+<head>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" 
+	      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" 
+	      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" 
+	      crossorigin="anonymous" 
+	      referrerpolicy="no-referrer" />
+	<title>about page</title>
+</head>
+
+<body >
+	<section>
+	   <div class="card mb-2 "  >
+	   
+	        <div class="card-body">
+	        
+	            <div class="container text-center">
+	            
+	                <img style="width:157px;height:157px;border-radius:50%" src="" class="profile_picture " th:src="@{'/image/'+${user.imageUrl}}" />  
+	                  <h3 class="namewithnickname mt-3"> <span style="color:tomato" th:text="${user.name}"></span></h3>
+	            </div>
+	            
+	            <table class="table text-center">
+
+  <tbody>
+    <tr>
+      <th scope="row"><i class="fa-solid fa-id-card-clip"></i>User ID</th>
+      
+      <td><span th:text="@{'PROFILE'+${user.id}}"></span></td>
+    </tr>
+    
+    <tr>
+      <th scope="row"><i class="fa-solid fa-envelope"></i> Email</th>
+      <td><span th:text="${user.email}"></span></td>
+      
+    </tr>
+    
+    <tr>
+      <th scope="row"><i class="fa-sharp fa-solid fa-person-walking-luggage"></i> Role</th>
+      <td><span th:text="${user.role}"></span></td>
+     
+    </tr>
+    
+    <tr>
+      <th scope="row"><i class="fa-solid fa-file-invoice"></i> Account Active</th>
+      <td><span th:text="${user.enabled}"></span></td>
+    
+    </tr>
+    <tr>
+      <th scope="row"><i class="fa-solid fa-eject"></i> About You</th>
+      <td><span th:text="${user.about}"></span></td>
+    
+    </tr>
+  </tbody>
+</table>         	            
+	        </div>
+	        	   
+	   </div>
+	
+	</section>
+</body>
+</html>

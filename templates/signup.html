@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace=~{base::layout(~{::section})}>
+<head>
+	<meta charset="UTF-8" />
+	<title th:text="${title}"></title>
+</head>
+<body>
+	<section class="register">
+	<div class="container">
+	<div class="row">
+	<div class="col-md-6 offset-md-3">
+	
+	<div class="my-card  ">
+	<div th:if="${session.message}" th:classappend="${session.message.type}" class="alert"style="height:2%" role="alert">
+  <p class="text-center" th:text="${session.message.contect}"></p>
+  <th:block th:remove="all"></th:block>
+</div>
+	<h2 class="text-center">
+	<img style="width:55px ;border-radius:50%;background-color:#7FFFD4" src="" th:src="@{/image/register-icon.png}" alt="" /> Register Here!!</h2>
+	
+	<!-- form control -->
+	   <form   th:action="@{/do-register}" method="post" th:object="${user}">
+	   
+	   <!-- name -->
+	   <div class="form-group">
+          <label for="name-feild">Your Name</label>
+         <input type="text"                  
+                class="form-control"                               
+                name="name" 
+                
+                id="name-feild"                                             
+                aria-describedby="emailHelp" 
+                placeholder="Enter Name"
+                required 
+                th:value="${user.name}"  
+                >   
+             <div class="invalid-feedback" th:each="err : ${#fields.errors('email')}" th:text="${err}">
+         
+            </div> 
+        </div>
+
+      <!-- email -->
+      <div class="form-group">
+    <label for="email-feild">Email address</label>
+    <input type="email"
+           class="form-control" 
+           th:classappend="${#fields.hasErrors('email')? 'is-invalid':''}"  
+           name="email" 
+           th:value="${user.email}" 
+           id="email-feild" 
+           required
+           aria-describedby="emailHelp" 
+           placeholder="Enter email"
+           >
+           <div class="invalid-feedback" th:each="err : ${#fields.errors('email')}" th:text="${err}">
+         
+      </div>         
+    </div>
+   <!-- password -->
+    <div class="form-group">
+    <label for="password-feild">Password</label>
+    <input type="password" 
+           class="form-control"
+          
+           name="password"         
+           id="password-feild" 
+           placeholder="Password">
+          
+  </div>
+  
+  
+  <!-- User about feild -->
+  <div class="form-group">
+   <textarea name="about" 
+             placeholder="Write something about yourself" 
+             id="" 
+             rows="2" 
+             class="form-control"
+            
+             th:text="${user.about}" 
+            ></textarea>
+            
+  </div>
+  <!-- terms and conditions -->
+  <div class="custom-control custom-checkbox ">
+      <input type="checkbox" 
+      class="custom-control-input " 
+      name="agreement"
+      id="customCheck1">
+  <label class="custom-control-label" for="customCheck1">Terms and Conditions</label>
+</div>
+
+   <!-- submit amd reset -->
+   <div class="container text-center mt-1">
+  <button type="submit" class="btn btn-success btn-block">Submit</button>
+  <button type="reset" class="btn btn-warning btn-block ">Reset</button>
+   </div>
+  </form>
+      
+	</div>
+	
+	</div>
+	</div>
+	</div>
+	
+	
+	</section>
+</body>
+</html>
